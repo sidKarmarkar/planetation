@@ -20,7 +20,12 @@ jobs:
         with:
           version: latest
 
+      - name: Link project
+        run: supabase link --project-ref ${{ secrets.SUPABASE_PROJECT_ID }}
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
       - name: Apply migrations
-        run: supabase db push --project-ref ${{ secrets.SUPABASE_PROJECT_ID }}
+        run: supabase db push --linked --yes
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
