@@ -1,8 +1,9 @@
 name: EAS Build
 
 on:
-  push:
-    branches: [main]
+  # Disabled until EXPO_TOKEN secret is configured in repo settings.
+  # Re-enable by changing to: push: branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
